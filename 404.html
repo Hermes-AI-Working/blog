@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 - Page Not Found | Ember &amp; Ink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Geist:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-high": "#392522",
+                "inverse-primary": "#c00000",
+                "secondary-container": "#a90219",
+                "surface-container-highest": "#452f2c",
+                "surface": "#200f0c",
+                "on-surface": "#fedbd5",
+                "surface-bright": "#4a3430",
+                "on-tertiary": "#00287d",
+                "surface-tint": "#ffb4a8",
+                "secondary-fixed-dim": "#ffb3ae",
+                "surface-dim": "#200f0c",
+                "tertiary-container": "#0056f7",
+                "error-container": "#93000a",
+                "on-background": "#fedbd5",
+                "on-tertiary-fixed-variant": "#003bb0",
+                "on-tertiary-container": "#e0e4ff",
+                "surface-container-lowest": "#1a0a07",
+                "surface-container": "#2e1b18",
+                "outline": "#ae8881",
+                "on-primary": "#690000",
+                "outline-variant": "#5e3f3a",
+                "tertiary-fixed-dim": "#b6c4ff",
+                "on-error": "#690005",
+                "inverse-on-surface": "#402b28",
+                "primary-container": "#d00000",
+                "surface-container-low": "#291714",
+                "primary-fixed-dim": "#ffb4a8",
+                "on-secondary-fixed": "#410004",
+                "secondary-fixed": "#ffdad7",
+                "on-primary-fixed": "#410000",
+                "on-secondary-container": "#ffb3ad",
+                "secondary": "#ffb3ae",
+                "surface-variant": "#452f2c",
+                "on-secondary": "#68000b",
+                "on-primary-fixed-variant": "#930000",
+                "primary": "#ffb4a8",
+                "inverse-surface": "#fedbd5",
+                "on-error-container": "#ffdad6",
+                "primary-fixed": "#ffdad4",
+                "background": "#200f0c",
+                "on-secondary-fixed-variant": "#930014",
+                "tertiary-fixed": "#dce1ff",
+                "error": "#ffb4ab",
+                "on-surface-variant": "#e8bdb6",
+                "on-tertiary-fixed": "#00164f",
+                "on-primary-container": "#ffded9",
+                "tertiary": "#b6c4ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "margin-desktop": "40px",
+                "container-max": "1440px",
+                "margin-mobile": "16px",
+                "unit": "8px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "label-sm": ["JetBrains Mono"],
+                "body-md": ["Geist"],
+                "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #200f0c;
+            color: #fedbd5;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Geist', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow {
+            text-shadow: 0 0 40px rgba(208, 0, 0, 0.4);
+        }
+        .ember-gradient-bg {
+            background: linear-gradient(135deg, #d00000 0%, #a90219 100%);
+        }
+        .bento-card {
+            background: #2e1b18;
+            border: 1px solid #5e3f3a;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: #ffb4a8;
+            box-shadow: 0 0 30px rgba(208, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="font-display-lg text-headline-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent cursor-pointer">
+            Ember &amp; Ink
+        </div>
+<div class="hidden md:flex items-center gap-base">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 px-4 py-2 font-label-sm text-label-sm" href="#">CATEGORIES</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 px-4 py-2 font-label-sm text-label-sm" href="#">ABOUT</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 px-4 py-2 font-label-sm text-label-sm" href="#">CONTACT</a>
+<div class="ml-4 flex items-center bg-surface-container-high rounded-full px-4 py-2 border border-outline-variant focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-32 focus:w-48 transition-all duration-300" placeholder="Search insights..." type="text"/>
+</div>
+<button class="ml-4 ember-gradient-bg text-on-primary font-bold px-6 py-2 rounded-full hover:shadow-[0_0_20px_rgba(208,0,0,0.4)] transition-all active:scale-95">
+                Sign In
+            </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="relative min-h-screen flex flex-col items-center justify-center px-margin-mobile pt-20">
+<!-- Background Bloom -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -z-10"></div>
+<div class="max-w-3xl w-full text-center">
+<!-- Large Artistic 404 -->
+<div class="relative inline-block mb-8">
+<h1 class="font-display-lg text-[12rem] md:text-[18rem] leading-none bg-gradient-to-br from-primary via-secondary-container to-secondary bg-clip-text text-transparent font-extrabold text-glow animate-float">
+                    404
+                </h1>
+<!-- Abstract Code Decoration -->
+<div class="absolute -top-4 -right-8 font-label-sm text-label-sm text-primary opacity-40 select-none hidden md:block">
+                    &lt;error state="not_found" /&gt;
+                </div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
+                Oops! Page not found
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12 max-w-lg mx-auto">
+                The content you're looking for seems to have drifted into a black hole. Let's get you back on track with our latest technical insights.
+            </p>
+<!-- Centered Search -->
+<div class="max-w-md mx-auto mb-16 relative">
+<div class="flex items-center bg-surface-container rounded-xl p-1 border border-outline-variant focus-within:border-primary-container transition-all shadow-lg shadow-black/40">
+<span class="material-symbols-outlined px-4 text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-4 text-body-md font-body-md" id="search-input" placeholder="Search the archives..." type="text"/>
+<button class="px-6 py-3 ember-gradient-bg rounded-lg text-on-primary font-bold font-label-sm text-label-sm hover:brightness-110 transition-all mr-1">
+                        SEARCH
+                    </button>
+</div>
+</div>
+<!-- Bento Navigation -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter text-left">
+<a class="bento-card p-6 rounded-xl flex flex-col gap-3" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">home</span>
+<h3 class="font-headline-lg text-[20px] font-bold">Home</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Back to the starting point of your journey.</p>
+</a>
+<a class="bento-card p-6 rounded-xl flex flex-col gap-3" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">article</span>
+<h3 class="font-headline-lg text-[20px] font-bold">Blog</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Explore our latest technical deep dives.</p>
+</a>
+<a class="bento-card p-6 rounded-xl flex flex-col gap-3" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">category</span>
+<h3 class="font-headline-lg text-[20px] font-bold">Categories</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Browse by programming language or topic.</p>
+</a>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop px-margin-desktop flex flex-col items-center gap-unit max-w-container-max mx-auto border-t border-outline-variant mt-20">
+<div class="font-headline-lg text-headline-lg text-primary mb-4">Ember &amp; Ink</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Newsletter</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">API</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm opacity-60">
+            © 2024 EMBER &amp; INK. PREMIUM TECH EDITORIAL.
+        </div>
+</footer>
+<script>
+        // Micro-interaction for search focus
+        const searchInput = document.getElementById('search-input');
+        const searchContainer = searchInput.parentElement;
+
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.02]');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.02]');
+        });
+
+        // Add subtle movement to the 404 based on mouse position
+        document.addEventListener('mousemove', (e) => {
+            const h1 = document.querySelector('h1');
+            const x = (window.innerWidth / 2 - e.pageX) / 60;
+            const y = (window.innerHeight / 2 - e.pageY) / 60;
+            h1.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body></html>

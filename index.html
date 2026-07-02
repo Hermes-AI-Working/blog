@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#392522",
+                    "inverse-primary": "#c00000",
+                    "secondary-container": "#a90219",
+                    "surface-container-highest": "#452f2c",
+                    "surface": "#200f0c",
+                    "on-surface": "#fedbd5",
+                    "surface-bright": "#4a3430",
+                    "on-tertiary": "#00287d",
+                    "surface-tint": "#ffb4a8",
+                    "secondary-fixed-dim": "#ffb3ae",
+                    "surface-dim": "#200f0c",
+                    "tertiary-container": "#0056f7",
+                    "error-container": "#93000a",
+                    "on-background": "#fedbd5",
+                    "on-tertiary-fixed-variant": "#003bb0",
+                    "on-tertiary-container": "#e0e4ff",
+                    "surface-container-lowest": "#1a0a07",
+                    "surface-container": "#2e1b18",
+                    "outline": "#ae8881",
+                    "on-primary": "#690000",
+                    "outline-variant": "#5e3f3a",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#402b28",
+                    "primary-container": "#d00000",
+                    "surface-container-low": "#291714",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "on-secondary-fixed": "#410004",
+                    "secondary-fixed": "#ffdad7",
+                    "on-primary-fixed": "#410000",
+                    "on-secondary-container": "#ffb3ad",
+                    "secondary": "#ffb3ae",
+                    "surface-variant": "#452f2c",
+                    "on-secondary": "#68000b",
+                    "on-primary-fixed-variant": "#930000",
+                    "primary": "#ffb4a8",
+                    "inverse-surface": "#fedbd5",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#ffdad4",
+                    "background": "#200f0c",
+                    "on-secondary-fixed-variant": "#930014",
+                    "tertiary-fixed": "#dce1ff",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#e8bdb6",
+                    "on-tertiary-fixed": "#00164f",
+                    "on-primary-container": "#ffded9",
+                    "tertiary": "#b6c4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "section-gap": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Geist", "Inter"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #200f0c;
+            color: #fedbd5;
+            scroll-behavior: smooth;
+        }
+        .ember-gradient-bg {
+            background: linear-gradient(135deg, #d00000 0%, #a90219 50%, #690000 100%);
+        }
+        .glass-card {
+            background: rgba(46, 27, 24, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 180, 168, 0.1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 40px rgba(208, 0, 0, 0.15);
+            border-color: #d00000;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .code-block-header {
+            background: #1a0a07;
+            border-bottom: 1px solid #452f2c;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/80 backdrop-blur-md border-b border-surface-variant">
+<div class="font-display-lg text-display-lg bg-gradient-to-r from-inverse-primary via-secondary-container to-primary bg-clip-text text-transparent">Ember &amp; Ink</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">Categories</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">About</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-all">search</button>
+<button class="bg-primary-container text-white px-6 py-2 rounded-full font-label-caps text-label-caps font-bold active:scale-95 duration-150 shadow-lg shadow-primary-container/20">Sign In</button>
+</div>
+</nav>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[819px] flex items-center justify-center py-section-gap px-margin-desktop overflow-hidden">
+<div class="relative z-10 max-w-container-max w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 flex flex-col gap-4">
+<span class="inline-block px-3 py-1 bg-secondary-container text-white font-label-caps text-label-caps rounded-sm w-fit">FEATURED ARTICLE</span>
+<h1 class="font-display-lg text-display-lg text-white max-w-2xl leading-tight">Beyond the Silicon: The Soul of Modern Craftsmanship</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mt-4">Exploring the intersection of high-end software engineering and the artisanal meticulousness required to build lasting digital legacies in the era of AI.</p>
+<div class="mt-6 flex gap-gutter">
+<button class="ember-gradient-bg text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 hover:shadow-[0_0_30px_rgba(208,0,0,0.3)] transition-all">
+                            Read Article <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="border border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-primary/10 transition-all">
+                            Save for Later
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 hidden lg:block">
+<div class="relative rounded-xl overflow-hidden shadow-2xl border border-surface-variant aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" data-alt="A high-contrast, professional close-up of a high-end mechanical keyboard and a high-resolution coding monitor displaying complex syntax. The lighting is moody with deep ink-blacks and vibrant orange glows emanating from the backlit keys. The composition feels authoritative, premium, and focused on technological craft." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9ZbTgb0p6dzf7oMQdZgl0AVO5neWH0DI5O6YySpoZ3a02p4-6yx0gp_cRr9-FOUKTueVrtwzsuHcp8JaWk34MrNKogoGqQvooES8zBC7W2S1CkzfB84YEYZ-envj41eKcDyVyuzvKFLfeBrPNG8QffV6NI6x37AsKYrefMKLtZ0YqmFP3kTwUfBvQXI3XWSkmEEWSWPoYwbta9WSGDMordTMXatype6wrK4zgYXYoHbYfVBm24Wdv6V-OaUKOrIXAxnRC5O091Ms"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats / Quick Info -->
+<section class="bg-surface-container-lowest py-12 border-y border-surface-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-primary">124k+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Monthly Readers</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-primary">850</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Deep Dives</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-primary">12.5k</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Newsletter Subs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-primary">4.9/5</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Content Quality</span>
+</div>
+</div>
+</section>
+<!-- Latest Posts - Bento Grid -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-md text-headline-md text-white">Latest Insights</h2>
+<p class="text-on-surface-variant mt-2">New perspectives on code, design, and hardware.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 hover:underline" href="#">View All Posts <span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 group relative rounded-xl overflow-hidden bg-surface-container border border-surface-variant reveal">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A clean, minimalist workspace with a single high-performance laptop, a leather notebook, and a glass of water on a dark matte desk. The room is softly lit by a sunset glowing through a window, casting warm orange highlights across the professional setup. High-end dark minimalism with premium textural details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpjzE2EC5IbtZlZoIp_-68P5Zd3issVvD6bVdadKKralvmiDMODFVoMZQE7PUdJd0pO1kDzUEjHoD5V3eM7QyOwjGCKywUaEx6FFyzbQ-IK9lFFqCcLtAHtJAfwKxx6xsgpxrNWQWf6seC3qBmZec5HqnJ9ot4Vj0ahv0HfdeMN0_P2JqN8TLfUvmT6ThysvIN42nfolZlUCrxm48SDEGqyfHvkXNoL8N7gY3smqfrrkgTtc-Rgi_MR7nijTmtrFk3CHnkmfs3tU"/>
+</div>
+<div class="p-gutter">
+<span class="text-primary font-label-caps text-label-caps mb-2 block">ARCHITECTURE</span>
+<h3 class="font-headline-sm text-headline-sm text-white group-hover:text-primary transition-colors">Designing for Resilience: Distributed Systems in 2024</h3>
+<p class="text-on-surface-variant mt-4 line-clamp-2">How modern infrastructure is evolving to handle the next generation of massive real-time data streams without compromising on latency or cost.</p>
+<div class="mt-6 flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female tech architect, minimalist background, soft focus, high-end editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp88cHENjcTBpdtIBo9Fu7aQdiOMWdl3HAC7L8-fJ78uLVHzLno7x_33MC0TefWJVp5mBwTYKCgg7izRxm_c0FteTjfT97vPtMjjkKSWgtpufupSnpfJAFXZUkktpuyvwTOkTzeGMNOzVWAyE4a4mN7vZUWfA8vQfrfIFHno4Vy6qJhTv2ip8fI_Cj7HUo0CUJZMB0Fy5ainUaeU8vkQFDhJWcFBdSTck2nc2Vq2VUST8DuDJJlwEVgoF_w7bNwqXL_X8ggOkgj70"/>
+</div>
+<span class="text-on-surface-variant text-sm">Elena Vance • 8 min read</span>
+</div>
+</div>
+</div>
+<!-- Vertical Card -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="group bg-surface-container border border-surface-variant p-gutter rounded-xl glow-hover transition-all reveal">
+<span class="text-secondary font-label-caps text-label-caps mb-2 block">HARDWARE</span>
+<h4 class="font-headline-sm text-headline-sm text-white leading-tight">The Return of Mechanical Precision</h4>
+<p class="text-on-surface-variant mt-2 line-clamp-2">Why engineers are flocking back to analog tactile feedback for high-stakes environments.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Nov 12, 2024</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+</div>
+<div class="group bg-surface-container border border-surface-variant p-gutter rounded-xl glow-hover transition-all reveal" style="transition-delay: 100ms;">
+<span class="text-tertiary-fixed-dim font-label-caps text-label-caps mb-2 block">AI ETHICS</span>
+<h4 class="font-headline-sm text-headline-sm text-white leading-tight">The Ghost in the Large Language Model</h4>
+<p class="text-on-surface-variant mt-2 line-clamp-2">Navigating the gray areas of code ownership and creative attribution in the AI era.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Nov 10, 2024</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Signup Section -->
+<section class="w-full bg-surface-container-lowest py-section-gap relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute -left-20 -bottom-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+<div class="max-w-[800px] mx-auto px-margin-desktop text-center relative z-10">
+<h2 class="font-display-lg text-display-lg text-white mb-4">Refine Your Feed.</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg mb-8">Get bi-weekly curated insights on the future of technology, delivered directly to your inbox. No noise, just signal.</p>
+<form class="flex flex-col md:flex-row gap-base max-w-md mx-auto">
+<input class="flex-grow bg-surface-container-low border-b-2 border-surface-variant focus:border-primary px-4 py-3 outline-none text-white transition-all placeholder:text-on-surface-variant" placeholder="Enter your email" type="email"/>
+<button class="ember-gradient-bg text-white px-8 py-3 rounded-md font-bold hover:shadow-[0_0_20px_rgba(208,0,0,0.4)] transition-all whitespace-nowrap">Subscribe Now</button>
+</form>
+<p class="text-[10px] text-on-surface-variant mt-4 uppercase tracking-widest">JOIN 12,000+ PREMIUM SUBSCRIBERS</p>
+</div>
+</section>
+<!-- Categories & Popular Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-section-gap grid grid-cols-1 lg:grid-cols-4 gap-section-gap">
+<!-- Categories Sidebar -->
+<div class="lg:col-span-1">
+<h3 class="font-label-caps text-label-caps text-primary mb-6">EXPLORE TOPICS</h3>
+<div class="flex flex-col gap-2">
+<a class="group flex justify-between items-center py-3 border-b border-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-bold">Engineering</span>
+<span class="font-code-sm text-xs opacity-50">42</span>
+</a>
+<a class="group flex justify-between items-center py-3 border-b border-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-bold">Design Systems</span>
+<span class="font-code-sm text-xs opacity-50">18</span>
+</a>
+<a class="group flex justify-between items-center py-3 border-b border-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-bold">Hardware</span>
+<span class="font-code-sm text-xs opacity-50">24</span>
+</a>
+<a class="group flex justify-between items-center py-3 border-b border-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-bold">AI &amp; Ethics</span>
+<span class="font-code-sm text-xs opacity-50">31</span>
+</a>
+<a class="group flex justify-between items-center py-3 border-b border-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-bold">Cybersecurity</span>
+<span class="font-code-sm text-xs opacity-50">12</span>
+</a>
+</div>
+</div>
+<!-- Popular Posts Cards -->
+<div class="lg:col-span-3">
+<h3 class="font-label-caps text-label-caps text-white mb-6">MOST POPULAR THIS WEEK</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Post Card 1 -->
+<div class="bg-surface-container-low border border-surface-variant rounded-xl overflow-hidden glow-hover group reveal">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="A visually stunning close-up of a server rack with glowing blue and orange fiber optic cables. The image uses a shallow depth of field to emphasize the high-tech, high-performance infrastructure. The palette is dominated by deep blacks and vibrant electrical light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiyAeg7RktW4-LRbfaXfrBslqe0yfvzXT4TVUtglqOgw8d2HEw1SA9FxgOqx6fkwdPLnK2pMXChDuzjct3W1zqM2tot8rWje9dIuBAmJke8LSgzU_zhkUMDN0LM3D4P0SQNw3fmcDy9AwWx0_JeLrtdd9FlCozIZJDl1h3DWQGEvV6i8EBbpnS1Z21zKflGMSi9Cg0zFS85pFI-6wmiDUxyq5nUtR2X-QAxkXQc__hpBG-qQOijEL40dAJN8gwwQi8cvNIvkSBxpw"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline-sm text-headline-sm text-white mb-4">Scalability Bottlenecks You Haven't Considered Yet</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">visibility</span>
+<span class="text-xs text-on-surface-variant">45.2k reads</span>
+</div>
+</div>
+</div>
+<!-- Post Card 2 -->
+<div class="bg-surface-container-low border border-surface-variant rounded-xl overflow-hidden glow-hover group reveal" style="transition-delay: 150ms;">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="An artistic digital representation of neural networks connecting in a dark space, with glowing orange pulses representing data transfer. The style is abstract, high-end, and clean, using a dark background and premium orange-gold lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC91mfW_2ao0jcoX7Elpen-3E47rRKkB4r1Fa4mRACONQmLjo6YwuHHPA8Dv9fXYeUygSa4u8BMO0B9F-7DN3FWab-2QmYBYlI_zxMmH9ilkR5-XIBIOlEfqF8IONLUMOatRseWnVrTeT5eXNgiS73j_djpKlYWUi-f2QMRWhrU3lGYD9mkP2N2XJ6Lsg2wDzCQx7TYBSMgT7ne7ZmfMIqtN7STfOnC7Mjz7kpFUDqnga4UmDtAEvzF0d3S5K4CWkHJV58tRTM1czg"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline-sm text-headline-sm text-white mb-4">The Psychology of Interaction Design in Virtual Space</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">visibility</span>
+<span class="text-xs text-on-surface-variant">32.1k reads</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials / Author Spotlight -->
+<section class="bg-surface-container-low py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-section-gap items-center">
+<div class="flex-1 reveal">
+<h2 class="font-headline-md text-headline-md text-white mb-6">Expert Voices</h2>
+<div class="glass-card p-gutter rounded-xl border-l-4 border-primary">
+<p class="font-body-lg italic text-on-surface mb-6">"Ember &amp; Ink is the only publication that treats software engineering with the same reverence as classical art. Their deep dives are essential reading for our entire senior architecture team."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional, high-end headshot of a male CTO in his late 40s. He has a clean, minimalist look, wearing a dark turtleneck against a neutral studio background. The lighting is sophisticated and editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzKt2_2d_cXacIN6w0hAU0eBjFHk2UbBrVpxVqwYsoueAA4EMOPxfERkoDVEU2LhIjD0HKVYsDsMDhJltljs1u5SVbWrhNTzvRo9NhabdiDVOZduhPec0ADRzfjcNrghvEeX9QW7e6JMr9vzDljJ_AvPSOHs4EsBE1PWsYREcxBJbgKbIObvwFHG2fdm6AgeHT8hq3CJUVT9gr6bM28HXWpQDfipTMB17ttZVvwpn1g_s2zzfJI-brTDSx3yGBbCvKaqL7ofHkQ5o"/>
+</div>
+<div>
+<p class="font-bold text-white">Julian Thorne</p>
+<p class="text-xs text-on-surface-variant">CTO at Prism Dynamics</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full reveal" style="transition-delay: 200ms;">
+<div class="bg-surface-container-high p-gutter rounded-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-primary">brush</span>
+</div>
+<h3 class="font-label-caps text-label-caps text-primary mb-4">AUTHOR SPOTLIGHT</h3>
+<div class="flex gap-gutter mb-6">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A creative professional portrait of a male author with a modern, artistic flair. He's in a sunlit studio filled with design books. The style is warm, authentic, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt8aY0nmU72lIuuiVqfnWgUbbIBOfTwk88Vm_Dov9C4ScXaiIrhAorzNRDtz8DkHNqg3uWD9UhOk8aGAxBI01K_zLcftkcwC86OGWNq-AbxFPuHNgNoH7-zdiMmaPvydWmJbfqC_y0hqUk3u0jOHZ05IMdKO21ErlsbCPMvaUu4AdzOmiPjHIkDGgcPxXYzwydgZ3JAGOgw_G2YsEEqthGyYuY9UcezpXOKMgTalEOr7WMO2y8RwjMWc9G7pJSiV31R1oYj4s6PHc"/>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-white">Marcus Sterling</h4>
+<p class="text-on-surface-variant text-sm mt-1">Founding Editor &amp; Systems Architect</p>
+<div class="flex gap-2 mt-3">
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-primary transition-colors text-white"><span class="material-symbols-outlined text-xs">share</span></button>
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-primary transition-colors text-white"><span class="material-symbols-outlined text-xs">alternate_email</span></button>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant">Marcus has spent two decades at the forefront of digital transformation, leading teams at three Fortune 500 companies before founding Ember &amp; Ink to focus on long-form technical storytelling.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop px-margin-desktop flex flex-col items-center gap-base max-w-container-max mx-auto border-t border-surface-variant mt-section-gap">
+<div class="font-headline-md text-headline-md text-primary mb-4">Ember &amp; Ink</div>
+<div class="flex flex-wrap justify-center gap-gutter mb-8">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Newsletter</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">API</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+<div class="text-center">
+<p class="text-on-surface-variant font-body-md text-body-md">© 2024 Ember &amp; Ink. Premium Tech Editorial.</p>
+<p class="text-[10px] text-on-surface-variant/50 mt-2 uppercase tracking-[0.2em]">Designed for the Discerning Engineer</p>
+</div>
+</footer>
+<script>
+        // Reveal Animations on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial call
+        reveal();
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const heroImage = document.querySelector('.group img');
+            if(heroImage) {
+                heroImage.style.transform = `translateY(${scroll * 0.05}px)`;
+            }
+        });
+    </script>
+</body></html>

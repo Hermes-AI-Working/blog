@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact | Ember &amp; Ink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-high": "#392522",
+                "inverse-primary": "#c00000",
+                "secondary-container": "#a90219",
+                "surface-container-highest": "#452f2c",
+                "surface": "#200f0c",
+                "on-surface": "#fedbd5",
+                "surface-bright": "#4a3430",
+                "on-tertiary": "#00287d",
+                "surface-tint": "#ffb4a8",
+                "secondary-fixed-dim": "#ffb3ae",
+                "surface-dim": "#200f0c",
+                "tertiary-container": "#0056f7",
+                "error-container": "#93000a",
+                "on-background": "#fedbd5",
+                "on-tertiary-fixed-variant": "#003bb0",
+                "on-tertiary-container": "#e0e4ff",
+                "surface-container-lowest": "#1a0a07",
+                "surface-container": "#2e1b18",
+                "outline": "#ae8881",
+                "on-primary": "#690000",
+                "outline-variant": "#5e3f3a",
+                "tertiary-fixed-dim": "#b6c4ff",
+                "on-error": "#690005",
+                "inverse-on-surface": "#402b28",
+                "primary-container": "#d00000",
+                "surface-container-low": "#291714",
+                "primary-fixed-dim": "#ffb4a8",
+                "on-secondary-fixed": "#410004",
+                "secondary-fixed": "#ffdad7",
+                "on-primary-fixed": "#410000",
+                "on-secondary-container": "#ffb3ad",
+                "secondary": "#ffb3ae",
+                "surface-variant": "#452f2c",
+                "on-secondary": "#68000b",
+                "on-primary-fixed-variant": "#930000",
+                "primary": "#ffb4a8",
+                "inverse-surface": "#fedbd5",
+                "on-error-container": "#ffdad6",
+                "primary-fixed": "#ffdad4",
+                "background": "#200f0c",
+                "on-secondary-fixed-variant": "#930014",
+                "tertiary-fixed": "#dce1ff",
+                "error": "#ffb4ab",
+                "on-surface-variant": "#e8bdb6",
+                "on-tertiary-fixed": "#00164f",
+                "on-primary-container": "#ffded9",
+                "tertiary": "#b6c4ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "margin-desktop": "40px",
+                "container-max": "1440px",
+                "margin-mobile": "16px",
+                "unit": "8px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-lg": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "label-sm": ["JetBrains Mono"],
+                "body-md": ["Geist"],
+                "display-lg": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ember-gradient-bg {
+            background: linear-gradient(135deg, #d00000 0%, #a90219 50%, #690000 100%);
+        }
+        .ember-glow {
+            box-shadow: 0 0 40px -5px rgba(208, 0, 0, 0.2);
+        }
+        .ember-glow-hover:hover {
+            box-shadow: 0 0 60px -5px rgba(208, 0, 0, 0.35);
+        }
+        .backdrop-ink {
+            backdrop-filter: blur(12px);
+            background-color: rgba(32, 15, 12, 0.8);
+        }
+        input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            transform: translateY(-24px) scale(0.85);
+            color: #ffb4a8;
+        }
+        .form-input-border {
+            border-bottom: 1px solid #5e3f3a;
+        }
+        .form-input-border:focus-within {
+            border-bottom: 2px solid #ffb4a8;
+        }
+        @keyframes success-pop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-success {
+            animation: success-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/80 backdrop-blur-md border-b border-surface-variant">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg bg-gradient-to-r from-primary via-secondary-container to-inverse-primary bg-clip-text text-transparent">Ember &amp; Ink</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Categories</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-4 py-2 border border-surface-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface ml-2 w-48" placeholder="Search insights..." type="text"/>
+</div>
+<button class="ember-gradient-bg px-6 py-2.5 rounded-full text-on-primary font-bold active:scale-95 duration-150 transition-all ember-glow">Sign In</button>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header -->
+<header class="mb-16 max-w-2xl">
+<h1 class="font-display-lg text-display-lg mb-4">Let's craft the <span class="text-primary">future</span> of tech.</h1>
+<p class="text-body-md text-on-surface-variant text-lg">Have a tip, a question, or a project in mind? Our editorial team and creative studio are ready to connect.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Contact Form Section -->
+<div class="lg:col-span-7 bg-surface-container rounded-xl p-8 md:p-12 border border-surface-variant relative overflow-hidden">
+<div id="contact-form-container">
+<form class="space-y-10" id="contact-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="relative form-input-border transition-all">
+<input class="block w-full bg-transparent border-none focus:ring-0 px-0 py-2 text-on-surface" id="name" name="name" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-2 text-on-surface-variant pointer-events-none transition-all duration-300 origin-left" for="name">Full Name</label>
+</div>
+<div class="relative form-input-border transition-all">
+<input class="block w-full bg-transparent border-none focus:ring-0 px-0 py-2 text-on-surface" id="email" name="email" placeholder=" " required="" type="email"/>
+<label class="absolute left-0 top-2 text-on-surface-variant pointer-events-none transition-all duration-300 origin-left" for="email">Email Address</label>
+</div>
+</div>
+<div class="relative form-input-border transition-all">
+<select class="block w-full bg-transparent border-none focus:ring-0 px-0 py-2 text-on-surface appearance-none cursor-pointer" id="subject" name="subject">
+<option class="bg-background" value="editorial">Editorial Inquiry</option>
+<option class="bg-background" value="studio">Design Studio</option>
+<option class="bg-background" value="partnership">Partnership</option>
+<option class="bg-background" value="other">Other</option>
+</select>
+<label class="absolute -top-6 left-0 text-primary text-[11px] font-label-sm uppercase tracking-widest" for="subject">Inquiry Type</label>
+<span class="material-symbols-outlined absolute right-0 top-2 pointer-events-none">expand_more</span>
+</div>
+<div class="relative form-input-border transition-all">
+<textarea class="block w-full bg-transparent border-none focus:ring-0 px-0 py-2 text-on-surface resize-none" id="message" name="message" placeholder=" " required="" rows="4"></textarea>
+<label class="absolute left-0 top-2 text-on-surface-variant pointer-events-none transition-all duration-300 origin-left" for="message">Your Message</label>
+</div>
+<button class="w-full md:w-auto ember-gradient-bg px-10 py-4 rounded-lg text-on-primary font-bold text-headline-lg-mobile transition-all hover:scale-[1.02] active:scale-95 ember-glow-hover flex items-center justify-center gap-3" type="submit">
+                            Send Message
+                            <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+<!-- Success State (Hidden by default) -->
+<div class="hidden absolute inset-0 bg-surface-container flex flex-col items-center justify-center text-center p-8 z-10" id="success-state">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mb-6 animate-success shadow-[0_0_30px_rgba(255,180,168,0.3)]">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-weight="fill">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Message Received</h2>
+<p class="text-on-surface-variant max-w-xs mb-8">Thanks for reaching out! Our team will get back to you within 24 hours.</p>
+<button class="text-primary font-label-sm border border-primary/30 px-6 py-2 rounded-full hover:bg-primary/10 transition-colors" onclick="resetForm()">Send another</button>
+</div>
+</div>
+<!-- Sidebar Info & Map -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<!-- Contact Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+<div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant flex gap-4 items-start hover:border-primary/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+<div>
+<span class="block font-label-sm text-primary mb-1">Email Us</span>
+<p class="font-label-sm text-on-surface">hello@emberink.tech</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-surface-variant flex gap-4 items-start hover:border-primary/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<span class="block font-label-sm text-primary mb-1">Call Us</span>
+<p class="font-label-sm text-on-surface">+1 (415) 555-0192</p>
+</div>
+</div>
+</div>
+<!-- Location Map -->
+<div class="bg-surface-container-low rounded-xl border border-surface-variant overflow-hidden flex flex-col h-full min-h-[300px]">
+<div class="p-6 border-b border-surface-variant flex justify-between items-center bg-surface-container">
+<div>
+<span class="font-label-sm text-primary">HQ Location</span>
+<h3 class="font-headline-lg-mobile">San Francisco, CA</h3>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+</div>
+<div class="flex-grow relative bg-surface-container-highest grayscale contrast-125 opacity-80 hover:opacity-100 transition-opacity">
+<!-- Mock Map Background -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A top-down, minimalist dark mode architectural map of a city block in San Francisco, featuring stylized glowing streets in crimson red and deep ink-black buildings. The aesthetic is clean, professional, and digital, matching a premium tech editorial brand's visual identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtWH3wSXLI_e25fBySYVD5W-yL4uvMclBGiLPbrgTmehzarUf4FcY20teI8EsFv4Rn6WiTqydEe2K6vKUa2yF0G_kuCSzhK09gQU3cwH4Xqn7DtdWbQmK5AE3om7T0TYCfRjow5AovOZduDsHbsmVzrR1F2FSWj27HPR9BaADuW8zAqnypFdtBSqnEKqBsHYgyxQcfAMLrNdmPKZ7dVSqbyDEfCgojwTR0ivCwS-Sx2nU1AedGyzIBvZhQEDPv8nS1rbNj8QOiwZk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40"></div>
+<!-- Map Marker -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-50"></div>
+<div class="relative w-4 h-4 rounded-full bg-primary border-4 border-background shadow-[0_0_15px_#ffb4a8]"></div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low">
+<p class="text-body-md text-on-surface-variant">300 Brannan St, Suite 402<br/>San Francisco, CA 94107</p>
+</div>
+</div>
+<!-- Socials -->
+<div class="flex gap-4">
+<a class="w-12 h-12 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-12 h-12 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="w-12 h-12 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-10 px-margin-desktop flex flex-col items-center gap-2 max-w-container-max mx-auto border-t border-surface-variant mt-20">
+<div class="flex flex-col md:flex-row justify-between w-full items-center gap-8 mb-12">
+<span class="font-headline-lg text-headline-lg text-primary">Ember &amp; Ink</span>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Newsletter</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">API</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center opacity-60">© 2024 Ember &amp; Ink. Premium Tech Editorial.</p>
+</footer>
+<script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formContainer = document.getElementById('contact-form-container');
+            const successState = document.getElementById('success-state');
+            
+            // Add fade out effect
+            formContainer.style.transition = 'opacity 0.3s ease';
+            formContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                formContainer.classList.add('hidden');
+                successState.classList.remove('hidden');
+                successState.classList.add('flex');
+            }, 300);
+        });
+
+        function resetForm() {
+            const formContainer = document.getElementById('contact-form-container');
+            const successState = document.getElementById('success-state');
+            const form = document.getElementById('contact-form');
+            
+            successState.classList.add('hidden');
+            successState.classList.remove('flex');
+            
+            form.reset();
+            formContainer.classList.remove('hidden');
+            formContainer.style.opacity = '1';
+        }
+
+        // Simple floating label logic for textarea which needs manual placeholder checking sometimes
+        const messageInput = document.getElementById('message');
+        messageInput.addEventListener('input', function() {
+            if (this.value) {
+                this.nextElementSibling.style.transform = 'translateY(-24px) scale(0.85)';
+                this.nextElementSibling.style.color = '#ffb4a8';
+            } else {
+                this.nextElementSibling.style.transform = '';
+                this.nextElementSibling.style.color = '';
+            }
+        });
+    </script>
+</body></html>

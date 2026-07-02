@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About | Ember &amp; Ink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Geist:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#392522",
+                    "inverse-primary": "#c00000",
+                    "secondary-container": "#a90219",
+                    "surface-container-highest": "#452f2c",
+                    "surface": "#200f0c",
+                    "on-surface": "#fedbd5",
+                    "surface-bright": "#4a3430",
+                    "on-tertiary": "#00287d",
+                    "surface-tint": "#ffb4a8",
+                    "secondary-fixed-dim": "#ffb3ae",
+                    "surface-dim": "#200f0c",
+                    "tertiary-container": "#0056f7",
+                    "error-container": "#93000a",
+                    "on-background": "#fedbd5",
+                    "on-tertiary-fixed-variant": "#003bb0",
+                    "on-tertiary-container": "#e0e4ff",
+                    "surface-container-lowest": "#1a0a07",
+                    "surface-container": "#2e1b18",
+                    "outline": "#ae8881",
+                    "on-primary": "#690000",
+                    "outline-variant": "#5e3f3a",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#402b28",
+                    "primary-container": "#d00000",
+                    "surface-container-low": "#291714",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "on-secondary-fixed": "#410004",
+                    "secondary-fixed": "#ffdad7",
+                    "on-primary-fixed": "#410000",
+                    "on-secondary-container": "#ffb3ad",
+                    "secondary": "#ffb3ae",
+                    "surface-variant": "#452f2c",
+                    "on-secondary": "#68000b",
+                    "on-primary-fixed-variant": "#930000",
+                    "primary": "#ffb4a8",
+                    "inverse-surface": "#fedbd5",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#ffdad4",
+                    "background": "#200f0c",
+                    "on-secondary-fixed-variant": "#930014",
+                    "tertiary-fixed": "#dce1ff",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#e8bdb6",
+                    "on-tertiary-fixed": "#00164f",
+                    "on-primary-container": "#ffded9",
+                    "tertiary": "#b6c4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "section-gap": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Geist"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ember-gradient {
+            background: linear-gradient(to right, #d00000, #a90219, #690000);
+        }
+        .text-ember-gradient {
+            background: linear-gradient(to right, #ffb4a8, #d00000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bloom-glow {
+            box-shadow: 0 0 40px -10px rgba(208, 0, 0, 0.4);
+        }
+        .glass-card {
+            background: rgba(46, 27, 24, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 180, 168, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/80 backdrop-blur-md border-b border-surface-variant">
+<div class="font-display-lg text-headline-lg bg-gradient-to-r from-primary via-primary-container to-inverse-primary bg-clip-text text-transparent select-none cursor-pointer">
+        Ember &amp; Ink
+    </div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Categories</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">About</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Contact</a>
+<button class="ml-4 px-6 py-2 ember-gradient text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-all bloom-glow font-label-caps text-label-caps">
+            Sign In
+        </button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Story-driven Hero Section -->
+<section class="relative min-h-[819px] flex items-center px-margin-desktop max-w-container-max mx-auto py-section-gap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 z-10">
+<h1 class="font-display-lg text-[40px] md:text-display-lg text-on-surface mb-6 leading-tight">
+                    Where <span class="text-ember-gradient">Code</span> Meets the Editorial Craft.
+                </h1>
+<p class="text-lg text-on-surface-variant mb-8 max-w-lg">
+                    Ember &amp; Ink was born from the realization that technical documentation often lacks heart, and editorial storytelling often lacks depth. We bridge that gap with authoritative insights wrapped in premium aesthetics.
+                </p>
+<div class="flex gap-4">
+<button class="px-8 py-3 ember-gradient text-white font-bold rounded-lg bloom-glow hover:translate-y-[-2px] transition-transform font-label-caps text-label-caps">
+                        Our Story
+                    </button>
+<button class="px-8 py-3 border border-primary text-primary font-bold rounded-lg hover:bg-primary/10 transition-colors font-label-caps text-label-caps">
+                        The Archive
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative mt-12 lg:mt-0">
+<div class="relative rounded-2xl overflow-hidden border border-surface-variant shadow-2xl bloom-glow">
+<img alt="A cinematic tech editorial office" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoSU2IIkOq9Rf1F9qlfW7S9eIvGAodiQvuX73g9TL75F6ZIdDLizD_x0WlFvLdIXxgyeUudVkBwO1dIVYZ1c_6KZm0s_jjOXxQeOt30xUPG44Taq19E2lsMpixeu2z523-lTHcveIOSAehji-FeGjwIWbIDFnbhauJUyMfaHrD87QOdqAo0ti1k_R8pJPRpVA0Oygw5w_xIvE-khoXYr8tUWGl0aewN7vQy08qRqueBGmyv7NGATo-vkNUg5G6oWoBV_rGAZR1cMk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Stats Floating Card -->
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl border border-outline-variant/30 hidden md:block">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">SINCE 2021</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">500k+ Readers</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Values Section -->
+<section class="bg-surface-container-lowest py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+<div>
+<span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">OUR MISSION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Democratizing Complexity through Design</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        We believe that technical knowledge shouldn't be a chore to consume. Our mission is to transform dense, complex engineering concepts into beautiful, digestible narratives. By combining expert-level technical accuracy with world-class UI design, we make the "hard stuff" feel accessible and inspiring for the next generation of builders.
+                    </p>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="p-8 border-l-4 border-primary bg-surface-container-low rounded-r-xl transition-all hover:bg-surface-container">
+<h3 class="font-headline-lg text-[20px] text-on-surface mb-2">Technical Authority</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Every line of code and every architectural diagram is peer-reviewed by industry veterans.</p>
+</div>
+<div class="p-8 border-l-4 border-outline-variant bg-surface-container-lowest hover:border-primary transition-all rounded-r-xl">
+<h3 class="font-headline-lg text-[20px] text-on-surface mb-2">Editorial Craft</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We treat every article like a work of art, focusing on rhythm, clarity, and visual impact.</p>
+</div>
+<div class="p-8 border-l-4 border-outline-variant bg-surface-container-lowest hover:border-primary transition-all rounded-r-xl">
+<h3 class="font-headline-lg text-[20px] text-on-surface mb-2">Radical Transparency</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">No paywalls, no clutter. Just high-signal information for the modern technologist.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Meet the Team Bento Grid -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">THE EDITORIAL BOARD</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Minds Behind the Ink</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Team Member 1 -->
+<div class="group flex flex-col bg-surface-container rounded-2xl overflow-hidden border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-square overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Alex Rivera" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi9ANmE061psp7f95k28CnIaluuAzz0tComERWc42-R8IPPiDYdGjzN0PNbkxJs3Src_hRh8WBVAoFPuFgNb_ryyBysXELEf0o2GaPMreWaKU9z1WkjLcLLD92Ct0vSfxCvfwnImWjNu_AbjD8873VTzY-4w4O3-rUL7q8B3724rk4SRSJOkC8G94uGOfiaKiM256rf8CStZAJxfht4uRs-Wms6Y_hcDpL0N9etLWJPQsuQywhUGN9IG0c5zJFqEsefwP3ViDFUXU"/>
+</div>
+<div class="p-8">
+<h4 class="font-headline-lg text-xl text-on-surface">Alex Rivera</h4>
+<p class="font-label-caps text-label-caps text-primary mb-4 uppercase">Editor in Chief</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Former Senior Architect at Silicon Valley giants. Alex blends deep systems knowledge with a passion for long-form narrative.</p>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="group flex flex-col bg-surface-container rounded-2xl overflow-hidden border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-square overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Maya Chen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHmZr4-JokYY7IGGQ2ON6v184oX-O5GBlxKc0dkmTi6FD2q6uh3UAgoNf0vKMokK5SWB805pBS4Pagkd0C0ekegzxPxLTBVUHFRuPjxw0aRAmQ8DGDKeZZnC7-ZEsr1KXmeVNs4UVyxcNwquuJSpqVulYSfDRfQLf_U6PkndTER9Lj7EkW58BDUv-gAX5s41nOCCtRYz93S-Nv6zmXbSCHwRajAerdIOAQBT3NAVut6dGPxf2Q6ILSKDM2WPAcRZwgOg1lSUyB9_c"/>
+</div>
+<div class="p-8">
+<h4 class="font-headline-lg text-xl text-on-surface">Maya Chen</h4>
+<p class="font-label-caps text-label-caps text-primary mb-4 uppercase">Design Director</p>
+<p class="font-body-md text-body-md text-on-surface-variant">A pioneer in 'Visual Documentation'. Maya ensures that every pixel on Ember &amp; Ink serves a functional and aesthetic purpose.</p>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="group flex flex-col bg-surface-container rounded-2xl overflow-hidden border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-square overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Jordan Smyth" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiRlVs95QK73UlLjSiGxYXVdk1t2nBsVh3wk7_OmrDYqnw6G2EbXBnsXeYQnS_38-9Im6ZPKht6U_tWbJqbfNDX4wml6pgLPfk49XXmsCTZnHKm723xvoP1jnUIjWWN-YKzX5EEgSR8CUb3n5unAHb9ULJxv_8qmXlaDnBvBTId8BbxNWrtiRjbn40bUglzj2_8R9LgX5VmiyEMGKeBWXILEXNbL4ACaPH65ugyH8EJVGXxPFbI3tBBqUTKp5JGnVXHZUEDyY0TrE"/>
+</div>
+<div class="p-8">
+<h4 class="font-headline-lg text-xl text-on-surface">Jordan Smyth</h4>
+<p class="font-label-caps text-label-caps text-primary mb-4 uppercase">Technical Lead</p>
+<p class="font-body-md text-body-md text-on-surface-variant">The engine room of our codebase. Jordan oversees all open-source contributions and interactive technical modules.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter CTA -->
+<section class="py-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto relative overflow-hidden rounded-3xl ember-gradient p-[1px]">
+<div class="bg-background rounded-[23px] py-16 px-gutter md:px-20 relative overflow-hidden">
+<!-- Subtle Glow effect -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] rounded-full -mr-48 -mt-48"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">The Weekly Dispatch</h2>
+<p class="text-lg text-on-surface-variant max-w-md">
+                            Get the latest technical deep-dives and design insights delivered to your inbox every Sunday morning. No spam, just substance.
+                        </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-surface-container border-0 border-b-2 border-surface-variant focus:border-primary focus:ring-0 text-on-surface font-body-md px-6 py-4 rounded-t-lg transition-all" placeholder="you@engineer.com" type="email"/>
+<button class="px-8 py-4 ember-gradient text-white font-bold rounded-lg bloom-glow hover:scale-105 active:scale-95 transition-all font-label-caps text-label-caps">
+                            Subscribe
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop px-margin-desktop flex flex-col items-center gap-base max-w-container-max mx-auto border-t border-surface-variant mt-section-gap">
+<div class="font-headline-lg text-headline-lg text-primary mb-6">Ember &amp; Ink</div>
+<div class="flex flex-wrap justify-center gap-gutter mb-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Newsletter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">API</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Careers</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Ember &amp; Ink. Premium Tech Editorial.</p>
+</footer>
+<script>
+    // Micro-interaction for team cards
+    document.querySelectorAll('.group').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Simple parallax for hero image
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroImg = document.querySelector('section img');
+        if(heroImg) {
+            heroImg.style.transform = `translateY(${scrolled * 0.1}px)`;
+        }
+    });
+</script>
+</body></html>

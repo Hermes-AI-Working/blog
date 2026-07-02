@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Console | Ember &amp; Ink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#392522",
+                      "inverse-primary": "#c00000",
+                      "secondary-container": "#a90219",
+                      "surface-container-highest": "#452f2c",
+                      "surface": "#200f0c",
+                      "on-surface": "#fedbd5",
+                      "surface-bright": "#4a3430",
+                      "on-tertiary": "#00287d",
+                      "surface-tint": "#ffb4a8",
+                      "secondary-fixed-dim": "#ffb3ae",
+                      "surface-dim": "#200f0c",
+                      "tertiary-container": "#0056f7",
+                      "error-container": "#93000a",
+                      "on-background": "#fedbd5",
+                      "on-tertiary-fixed-variant": "#003bb0",
+                      "on-tertiary-container": "#e0e4ff",
+                      "surface-container-lowest": "#1a0a07",
+                      "surface-container": "#2e1b18",
+                      "outline": "#ae8881",
+                      "on-primary": "#690000",
+                      "outline-variant": "#5e3f3a",
+                      "tertiary-fixed-dim": "#b6c4ff",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#402b28",
+                      "primary-container": "#d00000",
+                      "surface-container-low": "#291714",
+                      "primary-fixed-dim": "#ffb4a8",
+                      "on-secondary-fixed": "#410004",
+                      "secondary-fixed": "#ffdad7",
+                      "on-primary-fixed": "#410000",
+                      "on-secondary-container": "#ffb3ad",
+                      "secondary": "#ffb3ae",
+                      "surface-variant": "#452f2c",
+                      "on-secondary": "#68000b",
+                      "on-primary-fixed-variant": "#930000",
+                      "primary": "#ffb4a8",
+                      "inverse-surface": "#fedbd5",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#ffdad4",
+                      "background": "#200f0c",
+                      "on-secondary-fixed-variant": "#930014",
+                      "tertiary-fixed": "#dce1ff",
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#e8bdb6",
+                      "on-tertiary-fixed": "#00164f",
+                      "on-primary-container": "#ffded9",
+                      "tertiary": "#b6c4ff",
+                      "surface-elevation-1": "#291714",
+                      "surface-elevation-2": "#2e1b18"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "container-max": "1440px",
+                      "margin-mobile": "16px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ember-gradient-bg {
+            background: linear-gradient(135deg, #ffb4a8 0%, #d00000 50%, #690000 100%);
+        }
+        .ember-glow {
+            box-shadow: 0 10px 40px -10px rgba(208, 0, 0, 0.3);
+        }
+        .bento-card {
+            background-color: #291714;
+            border: 1px solid #5e3f3a;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: #ffb4a8;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a0a07; }
+        ::-webkit-scrollbar-thumb { background: #452f2c; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d00000; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col z-40 bg-surface-container-lowest border-r border-outline-variant overflow-y-auto">
+<div class="p-6">
+<h1 class="font-headline-sm text-headline-sm text-primary mb-1">Admin Console</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70">Ember &amp; Ink CMS</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 text-primary font-bold border-l-4 border-primary bg-surface-container py-3 px-4 transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<!-- Other Tabs -->
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="font-label-caps text-label-caps">Posts</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+<span class="font-label-caps text-label-caps">Media</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-caps text-label-caps">Categories</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="label">label</span>
+<span class="font-label-caps text-label-caps">Tags</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="comment">comment</span>
+<span class="font-label-caps text-label-caps">Comments</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">Users</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="search_check">search_check</span>
+<span class="font-label-caps text-label-caps">SEO</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+<span class="font-label-caps text-label-caps">View Site</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-primary/20">
+<img alt="User portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXQrc_g3HlySRDB2g1nRol0EAw-uX7ie-PX4fCnV8gCZnAg9agzJU7RAOZTkjNPmurJydLeH5N1PrvQhMrCErNwjsjGwIEr9alGwmG0isvPDFCuMNgdvtPdBneOg8jWm-g4-fovWIg-Vq3d1pNRBbO_xlMiBh8oJBLqvFJgn73SEILUvKuuaCBaRjpAqd8Lh1eG9wAXABHNzI9NZzg7T8ObbF6G8IIBm8vRusZO3dvVx_-Plk0G93UOHLrRWZPRFdcHvCaghYDCWM"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-body-md text-on-surface font-semibold truncate">Admin User</p>
+<p class="text-xs text-on-surface-variant truncate">editor@emberink.io</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center h-16 px-gutter w-full sticky top-0 z-30 bg-surface-container-low/90 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-colors" data-icon="menu">menu</button>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Admin Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-all active:opacity-80" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-all active:opacity-80" data-icon="analytics">analytics</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<!-- Create New Post Quick Action -->
+<button class="ember-gradient-bg text-on-primary font-label-caps text-label-caps px-6 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition-transform ember-glow active:scale-95">
+<span class="material-symbols-outlined !text-[18px]" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+                    CREATE NEW POST
+                </button>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-margin-desktop space-y-gutter">
+<!-- Statistics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bento-card p-6 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg" data-icon="article">article</span>
+<span class="text-green-400 font-code-sm text-code-sm">+12%</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">TOTAL POSTS</h3>
+<p class="font-display-lg text-display-lg-mobile lg:text-display-lg text-primary font-bold">1,284</p>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bento-card p-6 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg" data-icon="visibility">visibility</span>
+<span class="text-green-400 font-code-sm text-code-sm">+24%</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">UNIQUE VISITORS</h3>
+<p class="font-display-lg text-display-lg-mobile lg:text-display-lg text-primary font-bold">42.8k</p>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bento-card p-6 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary-fixed-dim bg-secondary/10 p-2 rounded-lg" data-icon="edit_note">edit_note</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Stable</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">DRAFTS</h3>
+<p class="font-display-lg text-display-lg-mobile lg:text-display-lg text-secondary-fixed-dim font-bold">18</p>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bento-card p-6 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg" data-icon="forum">forum</span>
+<span class="text-red-400 font-code-sm text-code-sm">-3%</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">COMMENTS</h3>
+<p class="font-display-lg text-display-lg-mobile lg:text-display-lg text-primary font-bold">352</p>
+</div>
+</div>
+</section>
+<!-- Main Analytics Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Interactive Visitor Chart -->
+<div class="bento-card lg:col-span-2 p-6 rounded-xl min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Visitor Engagement</h3>
+<p class="font-body-md text-on-surface-variant">Traffic analysis for the last 30 days</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-3 py-1 rounded text-xs font-label-caps border border-outline-variant hover:border-primary transition-colors">DAILY</button>
+<button class="bg-primary/20 text-primary px-3 py-1 rounded text-xs font-label-caps border border-primary/40">WEEKLY</button>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="absolute inset-0 flex items-end gap-1">
+<svg class="w-full h-full preserve-3d" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#d00000" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#d00000" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,250 Q100,200 200,230 T400,150 T600,180 T800,50 T1000,100 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<path class="animate-chart-line" d="M0,250 Q100,200 200,230 T400,150 T600,180 T800,50 T1000,100" fill="none" stroke="#d00000" stroke-linecap="round" stroke-width="4"></path>
+<circle class="animate-pulse" cx="200" cy="230" fill="#ffb4a8" r="5"></circle>
+<circle cx="400" cy="150" fill="#ffb4a8" r="5"></circle>
+<circle class="animate-pulse" cx="800" cy="50" fill="#ffb4a8" r="8"></circle>
+</svg>
+</div>
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-4 font-code-sm text-[10px] text-on-surface-variant uppercase tracking-widest border-t border-outline-variant/50">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="bento-card p-6 rounded-xl flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Real-time Feed</h3>
+<div class="flex-1 space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary !text-[20px]" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">New User Registration</p>
+<p class="text-xs text-on-surface-variant mt-1">2 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary !text-[20px]" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">New Comment on "Rust vs Go"</p>
+<p class="text-xs text-on-surface-variant mt-1">15 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary !text-[20px]" data-icon="system_update_alt">system_update_alt</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">Plugin: SEO Master updated</p>
+<p class="text-xs text-on-surface-variant mt-1">1 hour ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed-dim !text-[20px]" data-icon="share">share</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">Article shared on Twitter (X)</p>
+<p class="text-xs text-on-surface-variant mt-1">4 hours ago</p>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-3 text-center font-label-caps text-label-caps text-primary border border-primary/20 rounded-lg hover:bg-primary/10 transition-all">VIEW ALL LOGS</button>
+</div>
+</section>
+<!-- Recent Posts Table -->
+<section class="bento-card rounded-xl overflow-hidden">
+<div class="px-6 py-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Posts</h3>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant !text-[18px]" data-icon="search">search</span>
+<input class="w-full bg-background border-outline-variant rounded-lg pl-10 pr-4 py-2 text-sm focus:border-primary focus:ring-0 text-on-surface placeholder-on-surface-variant/50" placeholder="Filter articles..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container">
+<tr>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">TITLE</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">AUTHOR</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">CATEGORY</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DATE</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant text-right">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-container-high overflow-hidden flex-shrink-0">
+<img alt="Article thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_jtrF23aMIj7W7sN0o4LMtNLn5A96kKTjQGdAZ5TxggUabIVveXdeqid86hh6QGrjBTEHRtpG6-8TrDI_HgsxIlXK8Bp_cchf9bGp5PPBINKntrLEzHfZPP_Hht-TVtRo56Bb3X3_fubOuG4IBjd5ImamhplfR8ISNd7PWnveq30YJXcyfaagrBh3ToL5eq_-mP5ucUbNSsUl7tIo1pDHRSmuU2KJSx0XhaqB1gOAsF6fHspRNY9VQFVl1Yv6pE1uqRiHbgeeY50"/>
+</div>
+<span class="font-body-md text-on-surface font-medium group-hover:text-primary transition-colors">The Future of Concurrent UI Rendering</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Alex Rivera</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-medium">ENGINEERING</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-medium flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Published
+                                    </span>
+</td>
+<td class="px-6 py-4 font-code-sm text-code-sm text-on-surface-variant">May 12, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-container-high overflow-hidden flex-shrink-0">
+<img alt="Article thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2aIwVSk65qnSFsxc-Si3WR0P9onPCSB-xXjI6ojqKY6bcNTzOZfV-vQ8uPthuCqlSI-SSoljTsjsqxBZ7alOYI0gDG-d9lVP-goCUvcB8CWP9eNxNsZkmm06Owpk80i5e4t9ommXfrkes7xrLOfgok4PTD1sXf7Rc9KXC6_Q33Roa6MqGfHNlZFg0Sv7kCtiWK_P_PIyV9bhXw7US8v-70TjVoLI3M3zepyHLvtDwMgWNvFJBvfMUaSkhitPTm0fSdEh0z1oeRAM"/>
+</div>
+<span class="font-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Micro-interactions in Modern Dashboard Design</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Sarah Chen</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-medium">DESIGN</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full text-xs font-medium flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Draft
+                                    </span>
+</td>
+<td class="px-6 py-4 font-code-sm text-code-sm text-on-surface-variant">May 14, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-container-high overflow-hidden flex-shrink-0">
+<img alt="Article thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXEuWpHAhPfJmZPixpEnGEJ2BM9DXglr9sP0tl4ASY7xxqKsGx41l4HKLYXNOeQlOWFdNSvZ5zMcAXE8r7YAcV0oMjqDO93e-LMOOiJNeb2qXfae8IBALKDH6FBAzouQLeSxibB2edDXd9Xc7x9BY3fSALH3slp4CIrskBLyoTCiiIsWZMee_2wjO1e-A697GqHlA50hi_j4paJSu2U2yv-g3esJmSrFjdEilSykBg9K4_sXKUWqBYTNzUATN2wMEjvZi-7ZF2JTk"/>
+</div>
+<span class="font-body-md text-on-surface font-medium group-hover:text-primary transition-colors">Scaling Databases for Editorial Powerhouses</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Marcus Thorne</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-medium">ARCHITECTURE</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-medium flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Published
+                                    </span>
+</td>
+<td class="px-6 py-4 font-code-sm text-code-sm text-on-surface-variant">May 10, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<p class="font-code-sm text-code-sm text-on-surface-variant">Showing 1-10 of 1,284 entries</p>
+<div class="flex gap-1">
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant transition-colors disabled:opacity-30" disabled="">PREV</button>
+<button class="px-3 py-1 rounded border border-primary bg-primary/10 text-primary font-bold">1</button>
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant">2</button>
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant">3</button>
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant transition-colors">NEXT</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-margin-desktop px-margin-desktop flex flex-col items-center gap-base max-w-container-max mx-auto border-t border-outline-variant mt-auto">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Ember &amp; Ink</h4>
+<div class="flex flex-wrap justify-center gap-6 mb-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Newsletter</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">API</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60">© 2024 Ember &amp; Ink. Premium Crimson Editorial.</p>
+</footer>
+</main>
+<script>
+        // Micro-interaction for Stat Cards hover scale
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('ember-glow');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('ember-glow');
+            });
+        });
+
+        // Simple animation for the chart on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const chartPath = document.querySelector('.animate-chart-line');
+            if (chartPath) {
+                const length = chartPath.getTotalLength();
+                chartPath.style.strokeDasharray = length;
+                chartPath.style.strokeDashoffset = length;
+                chartPath.getBoundingClientRect(); // Trigger reflow
+                chartPath.style.transition = 'stroke-dashoffset 2s ease-in-out';
+                chartPath.style.strokeDashoffset = '0';
+            }
+        });
+    </script>
+</body></html>
